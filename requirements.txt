@@ -1,0 +1,6 @@
+SQLAlchemy==1.4.41
+virtualenv==20.16.5
+prospector==1.7.7
+pre-commit==2.20.0
+Flask==2.2.2
+mysqlclient==2.1.1
