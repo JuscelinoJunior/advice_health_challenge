@@ -1,0 +1,186 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Owners",
+    "version": "0.0.1",
+    "description": "This section describes all operations that can be executed on the /owners endpoint."
+  },
+  "servers": [
+    {
+      "url": "https://127.0.0.1:5050"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "Owner": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Defines the owner identifier",
+            "example": 12
+          },
+          "first-name": {
+            "type": "string",
+            "description": "Defines the user's first name.",
+            "example": "John"
+          },
+          "last-name": {
+            "type": "string",
+            "description": "Defines the user's last name.",
+            "example": "Doe"
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/owners": {
+      "summary": "Responsible for creating a user or reading a list of car owners.",
+      "get": {
+        "operationId": "getOwnersList",
+        "description": "Retrieves a list of car owners according to the defined filters.",
+        "tags": [
+          "Owners"
+        ],
+        "responses": {
+          "200": {
+            "description": "The cars list was retrieved successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Owner"
+                },
+                "examples": {
+                  "example1": {
+                    "summary": "GET owner list response",
+                    "value": {
+                      "content": [
+                        {
+                          "id": 12,
+                          "first-name": "John",
+                          "last-name": "Doe"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createUser",
+        "description": "Creates a new user according to the defined body parameters.",
+        "tags": [
+          "Owners"
+        ],
+        "responses": {
+          "201": {
+            "description": "The owner was created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Owner"
+                },
+                "examples": {
+                  "example1": {
+                    "summary": "POST owner response",
+                    "value": {
+                      "response-time": 0.245,
+                      "content": [
+                        {
+                          "id": 12,
+                          "first-name": "John",
+                          "last-name": "Doe"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "first-name",
+                  "last-name"
+                ],
+                "properties": {
+                  "first-name": {
+                    "description": "Defines the owner first name.",
+                    "minLength": 0,
+                    "maxLength": 60,
+                    "example": "John",
+                    "type": "string"
+                  },
+                  "last-name": {
+                    "description": "Defines the owner last name.",
+                    "minLength": 0,
+                    "maxLength": 60,
+                    "example": "Doe",
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/owners/{id}": {
+      "summary": "Responsible for reading or deleting a given owner.",
+      "get": {
+        "operationId": "getOwnerById",
+        "description": "Retrieves a user based on a given identifier.",
+        "tags": [
+          "Owners"
+        ],
+        "responses": {
+          "200": {
+            "description": "The owner was retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Owner"
+                },
+                "examples": {
+                  "example1": {
+                    "summary": "GET owners list response",
+                    "value": {
+                      "content": [
+                        {
+                          "id": 12,
+                          "first-name": "John",
+                          "last-name": "Doe"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteOwner",
+        "description": "Deletes an owner based on a given identifier.",
+        "tags": [
+          "Owners"
+        ],
+        "responses": {
+          "204": {
+            "description": "The owner was deleted successfully"
+          }
+        }
+      }
+    }
+  }
+}
