@@ -71,7 +71,7 @@
     "/cars": {
       "summary": "Responsible for creating a car or reading a list of car cars.",
       "get": {
-        "operationId": "app.read_all_cars",
+        "operationId": "api.read_all_cars",
         "description": "Retrieves a list of car cars.",
         "tags": [
           "Cars"
@@ -103,7 +103,7 @@
         }
       },
       "post": {
-        "operationId": "app.create_car",
+        "operationId": "api.create_car",
         "description": "Creates a new car according to the defined body parameters.",
         "tags": [
           "Cars"
@@ -178,7 +178,7 @@
     "/cars/{car_id}": {
       "summary": "Responsible for reading or deleting a given owner.",
       "delete": {
-        "operationId": "app.delete_car",
+        "operationId": "api.delete_car",
         "description": "Deletes a car based on a given identifier.",
         "tags": [
           "Cars"
@@ -193,7 +193,7 @@
     "/owners": {
       "summary": "Responsible for creating a user or reading a list of car owners.",
       "get": {
-        "operationId": "app.read_all_owners",
+        "operationId": "api.read_all_owners",
         "description": "Retrieves a list of car owners according to the defined filters.",
         "tags": [
           "Owners"
@@ -224,7 +224,7 @@
         }
       },
       "post": {
-        "operationId": "app.create_owner",
+        "operationId": "api.create_owner",
         "description": "Creates a new owner according to the defined body parameters.",
         "tags": [
           "Owners"
@@ -285,7 +285,7 @@
     "/owners/{owner_id}": {
       "summary": "Responsible for reading or deleting a given owner.",
       "delete": {
-        "operationId": "app.delete_owner",
+        "operationId": "api.delete_owner",
         "description": "Deletes a car based on a given identifier.",
         "tags": [
           "Owners"

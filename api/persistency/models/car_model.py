@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, ForeignKey, Text
+from sqlalchemy import Column, Integer, ForeignKey, Text  # type: ignore
 
 from persistency import Base
 from persistency.models.owner_model import Owner
