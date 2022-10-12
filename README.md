@@ -7,7 +7,7 @@ Run the command: `docker-compose up -d`
 The app address: http://0.0.0.0:5050
 The API address: http://0.0.0.0:8080
 
-API Documentation: http://0.0.0.0:8080/api_documentation.html
+API Documentation: http://0.0.0.0:5050/api_documentation.html
 
 ### Technologies
 - OpenAPI (to define the routes and rules for the API)
