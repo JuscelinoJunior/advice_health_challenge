@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://127.0.0.1:5050"
+      "url": "https://0.0.0.0:8080"
     }
   ],
   "components": {
@@ -55,12 +55,12 @@
           },
           "first-name": {
             "type": "string",
-            "description": "Defines the user's first name.",
+            "description": "Defines the owner's first name.",
             "example": "John"
           },
           "last-name": {
             "type": "string",
-            "description": "Defines the user's last name.",
+            "description": "Defines the owner's last name.",
             "example": "Doe"
           }
         }
@@ -78,7 +78,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The users list was retrieved successfully.",
+            "description": "The cars list was retrieved successfully.",
             "content": {
               "application/json": {
                 "schema": {
@@ -106,11 +106,11 @@
         "operationId": "app.create_car",
         "description": "Creates a new car according to the defined body parameters.",
         "tags": [
-          "Users"
+          "Cars"
         ],
         "responses": {
           "201": {
-            "description": "The user was created successfully",
+            "description": "The car was created successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -200,7 +200,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The users list was retrieved successfully.",
+            "description": "The cars list was retrieved successfully.",
             "content": {
               "application/json": {
                 "schema": {

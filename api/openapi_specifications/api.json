@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://127.0.0.1:5050"
+      "url": "https://0.0.0.0:8080"
     }
   ],
   "components": {
@@ -55,12 +55,12 @@
           },
           "first-name": {
             "type": "string",
-            "description": "Defines the user's first name.",
+            "description": "Defines the owner's first name.",
             "example": "John"
           },
           "last-name": {
             "type": "string",
-            "description": "Defines the user's last name.",
+            "description": "Defines the owner's last name.",
             "example": "Doe"
           }
         }
@@ -71,14 +71,14 @@
     "/cars": {
       "summary": "Responsible for creating a car or reading a list of car cars.",
       "get": {
-        "operationId": "api.read_all_cars",
+        "operationId": "app.read_all_cars",
         "description": "Retrieves a list of car cars.",
         "tags": [
           "Cars"
         ],
         "responses": {
           "200": {
-            "description": "The users list was retrieved successfully.",
+            "description": "The cars list was retrieved successfully.",
             "content": {
               "application/json": {
                 "schema": {
@@ -103,14 +103,14 @@
         }
       },
       "post": {
-        "operationId": "api.create_car",
+        "operationId": "app.create_car",
         "description": "Creates a new car according to the defined body parameters.",
         "tags": [
-          "Users"
+          "Cars"
         ],
         "responses": {
           "201": {
-            "description": "The user was created successfully",
+            "description": "The car was created successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -178,7 +178,7 @@
     "/cars/{car_id}": {
       "summary": "Responsible for reading or deleting a given owner.",
       "delete": {
-        "operationId": "api.delete_car",
+        "operationId": "app.delete_car",
         "description": "Deletes a car based on a given identifier.",
         "tags": [
           "Cars"
@@ -193,14 +193,14 @@
     "/owners": {
       "summary": "Responsible for creating a user or reading a list of car owners.",
       "get": {
-        "operationId": "api.read_all_owners",
+        "operationId": "app.read_all_owners",
         "description": "Retrieves a list of car owners according to the defined filters.",
         "tags": [
           "Owners"
         ],
         "responses": {
           "200": {
-            "description": "The users list was retrieved successfully.",
+            "description": "The cars list was retrieved successfully.",
             "content": {
               "application/json": {
                 "schema": {
@@ -224,7 +224,7 @@
         }
       },
       "post": {
-        "operationId": "api.create_owner",
+        "operationId": "app.create_owner",
         "description": "Creates a new owner according to the defined body parameters.",
         "tags": [
           "Owners"
@@ -285,7 +285,7 @@
     "/owners/{owner_id}": {
       "summary": "Responsible for reading or deleting a given owner.",
       "delete": {
-        "operationId": "api.delete_owner",
+        "operationId": "app.delete_owner",
         "description": "Deletes a car based on a given identifier.",
         "tags": [
           "Owners"
