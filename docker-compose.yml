@@ -1,0 +1,50 @@
+version: "3"
+
+services:
+  api_advice_health:
+    build:
+      context: ./
+      dockerfile: ./api.Dockerfile
+    container_name: api_advice_health
+    networks:
+      advice_dockernet:
+        ipv4_address: 172.16.241.8
+    ports:
+      - "8080:5000"
+
+
+  app_advice_health:
+    build:
+      context: ./
+      dockerfile: ./app.Dockerfile
+    container_name: app_advice_health
+    networks:
+      advice_dockernet:
+        ipv4_address: 172.16.241.7
+    ports:
+      - "5050:8000"
+    
+
+  mysql_advice_health:
+    image: mysql:latest
+    container_name: mysql_advice_health
+    command: --init-file /data/application/init.sql
+    restart: always
+    ports:
+      - "3306:3306"
+    networks:
+      advice_dockernet:
+        ipv4_address: 172.16.241.5
+    volumes:
+        - ./sql/init.sql:/data/application/init.sql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+
+
+networks:
+  advice_dockernet:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.241.0/24
+

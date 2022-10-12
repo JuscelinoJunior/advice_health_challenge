@@ -1,0 +1,301 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API",
+    "version": "0.0.1",
+    "description": "This section describes all operations that can be executed on the API."
+  },
+  "servers": [
+    {
+      "url": "https://127.0.0.1:5050"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "Car": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Defines the car identifier",
+            "example": 12
+          },
+          "model": {
+            "type": "string",
+            "enum": [
+              "hatch",
+              "sedan",
+              "convertible"
+            ],
+            "example": "hatch"
+          },
+          "color": {
+            "type": "string",
+            "enum": [
+              "yellow",
+              "blue",
+              "gray"
+            ],
+            "example": "gray"
+          },
+          "owner-id": {
+            "type": "integer",
+            "description": "Defines the car owner identifier",
+            "example": 3
+          }
+        }
+      },
+      "Owner": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Defines the owner identifier",
+            "example": 12
+          },
+          "first-name": {
+            "type": "string",
+            "description": "Defines the user's first name.",
+            "example": "John"
+          },
+          "last-name": {
+            "type": "string",
+            "description": "Defines the user's last name.",
+            "example": "Doe"
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/cars": {
+      "summary": "Responsible for creating a car or reading a list of car cars.",
+      "get": {
+        "operationId": "app.read_all_cars",
+        "description": "Retrieves a list of car cars.",
+        "tags": [
+          "Cars"
+        ],
+        "responses": {
+          "200": {
+            "description": "The users list was retrieved successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Car"
+                },
+                "examples": {
+                  "example1": {
+                    "summary": "GET cars list response",
+                    "value": [
+                      {
+                        "id": 12,
+                        "model": "John",
+                        "color": "Doe",
+                        "owner-id": 1
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "app.create_car",
+        "description": "Creates a new car according to the defined body parameters.",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "201": {
+            "description": "The user was created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Car"
+                },
+                "examples": {
+                  "example1": {
+                    "summary": "POST response",
+                    "value": {
+                      "id": 12,
+                      "model": "John",
+                      "color": "Doe"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "model",
+                "color",
+                "owner-id"
+              ],
+              "properties": {
+                "model": {
+                  "description": "Defines the model of the car",
+                  "type": "string",
+                  "enum": [
+                    "hatch",
+                    "sedan",
+                    "convertible"
+                  ],
+                  "example": "hatch"
+                },
+                "color": {
+                  "description": "Defines the color of the car",
+                  "type": "string",
+                  "enum": [
+                    "yellow",
+                    "blue",
+                    "gray"
+                  ],
+                  "example": "gray"
+                },
+                "owner-id": {
+                  "description": "Defines the car owner identifier.",
+                  "example": 1,
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 9223372036854775807
+                }
+              }
+            }
+          }
+        }
+      }
+      }
+    },
+    "/cars/{car_id}": {
+      "summary": "Responsible for reading or deleting a given owner.",
+      "delete": {
+        "operationId": "app.delete_car",
+        "description": "Deletes a car based on a given identifier.",
+        "tags": [
+          "Cars"
+        ],
+        "responses": {
+          "204": {
+            "description": "The car was deleted successfully"
+          }
+        }
+      }
+    },
+    "/owners": {
+      "summary": "Responsible for creating a user or reading a list of car owners.",
+      "get": {
+        "operationId": "app.read_all_owners",
+        "description": "Retrieves a list of car owners according to the defined filters.",
+        "tags": [
+          "Owners"
+        ],
+        "responses": {
+          "200": {
+            "description": "The users list was retrieved successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Owner"
+                },
+                "examples": {
+                  "example1": {
+                    "summary": "GET list response",
+                    "value": [
+                      {
+                        "id": 12,
+                        "first-name": "John",
+                        "last-name": "Doe"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "app.create_owner",
+        "description": "Creates a new owner according to the defined body parameters.",
+        "tags": [
+          "Owners"
+        ],
+        "responses": {
+          "201": {
+            "description": "The owner was created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Owner"
+                },
+                "examples": {
+                  "example1": {
+                    "summary": "POST owner response",
+                    "value": {
+                      "id": 12,
+                      "first-name": "John",
+                      "last-name": "Doe"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "first-name",
+                  "last-name"
+                ],
+                "properties": {
+                  "first-name": {
+                    "description": "Defines the owner first name.",
+                    "minLength": 0,
+                    "maxLength": 60,
+                    "example": "John",
+                    "type": "string"
+                  },
+                  "last-name": {
+                    "description": "Defines the owner last name.",
+                    "minLength": 0,
+                    "maxLength": 60,
+                    "example": "Doe",
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/owners/{owner_id}": {
+      "summary": "Responsible for reading or deleting a given owner.",
+      "delete": {
+        "operationId": "app.delete_owner",
+        "description": "Deletes a car based on a given identifier.",
+        "tags": [
+          "Owners"
+        ],
+        "responses": {
+          "204": {
+            "description": "The owner was deleted successfully"
+          }
+        }
+      }
+    }
+  }
+}
