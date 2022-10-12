@@ -17,7 +17,7 @@ function ownerCreate() {
   const last_name = document.getElementById("lname").value;
 
   const xhttp = new XMLHttpRequest();
-  xhttp.open("POST", "http://127.0.0.1:5000/owners");
+  xhttp.open("POST", "http://0.0.0.0:8080/owners");
   xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
   xhttp.send(JSON.stringify({
     "first-name": first_name, "last-name": last_name
@@ -69,7 +69,7 @@ function carCreate() {
   const owner_id = document.getElementById("owner-id").value;
 
   const xhttp = new XMLHttpRequest();
-  xhttp.open("POST", "http://127.0.0.1:5000/cars");
+  xhttp.open("POST", "http://0.0.0.0:8080/cars");
   xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
   xhttp.send(JSON.stringify({
     "model": model, "color": color, "owner-id": Number(owner_id)
@@ -90,7 +90,7 @@ function carCreate() {
 
 function ownerDelete(id) {
   const xhttp = new XMLHttpRequest();
-  xhttp.open("DELETE", "http://127.0.0.1:5000/owners/" + id);
+  xhttp.open("DELETE", "http://0.0.0.0:8080/owners/" + id);
   xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
   xhttp.send(JSON.stringify({
     "id": id
@@ -111,7 +111,7 @@ function ownerDelete(id) {
 
 function carDelete(id) {
   const xhttp = new XMLHttpRequest();
-  xhttp.open("DELETE", "http://127.0.0.1:5000/cars/" + id);
+  xhttp.open("DELETE", "http://0.0.0.0:8080/cars/" + id);
   xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
   xhttp.send(JSON.stringify({
     "id": id
@@ -132,7 +132,7 @@ function carDelete(id) {
 
 function loadTable() {
   const xhttp_owners = new XMLHttpRequest();
-  xhttp_owners.open("GET", "http://127.0.0.1:5000/owners");
+  xhttp_owners.open("GET", "http://0.0.0.0:8080/owners");
   xhttp_owners.send();
   xhttp_owners.onreadystatechange = function() {
     if (this.readyState === 4 && this.status === 200) {
@@ -152,7 +152,7 @@ function loadTable() {
   };
 
   const xhttp_cars = new XMLHttpRequest();
-  xhttp_cars.open("GET", "http://127.0.0.1:5000/cars");
+  xhttp_cars.open("GET", "http://0.0.0.0:8080/cars");
   xhttp_cars.send();
   xhttp_cars.onreadystatechange = function() {
     if (this.readyState === 4 && this.status === 200) {
